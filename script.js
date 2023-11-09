@@ -2,134 +2,89 @@ const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 
 const board = [
-	[
-		[2, 2],
-		[3, 2],
-		[4, 2],
-		[5, 2],
-		[6, 2],
-		[4, 2],
-		[3, 2],
-		[2, 2],
-	],
-	[
-		[1, 2],
-		[1, 2],
-		[1, 2],
-		[1, 2],
-		[1, 2],
-		[1, 2],
-		[1, 2],
-		[1, 2],
-	],
-	[
-		[0, 0],
-		[0, 0],
-		[0, 0],
-		[0, 0],
-		[0, 0],
-		[0, 0],
-		[0, 0],
-		[0, 0],
-	],
-	[
-		[0, 0],
-		[0, 0],
-		[0, 0],
-		[0, 0],
-		[0, 0],
-		[0, 0],
-		[0, 0],
-		[0, 0],
-	],
-	[
-		[0, 0],
-		[0, 0],
-		[0, 0],
-		[0, 0],
-		[0, 0],
-		[0, 0],
-		[0, 0],
-		[0, 0],
-	],
-	[
-		[0, 0],
-		[0, 0],
-		[0, 0],
-		[0, 0],
-		[0, 0],
-		[0, 0],
-		[0, 0],
-		[0, 0],
-	],
-	[
-		[1, 1],
-		[1, 1],
-		[1, 1],
-		[1, 1],
-		[1, 1],
-		[1, 1],
-		[1, 1],
-		[1, 1],
-	],
-	[
-		[2, 1],
-		[3, 1],
-		[4, 1],
-		[5, 1],
-		[6, 1],
-		[4, 1],
-		[3, 1],
-		[2, 1],
-	],
+  ["r", "n", "b", "k", "q", "b", "n", "r"],
+  ["p", "p", "p", "p", "p", "p", "p", "p"],
+  ["e", "e", "e", "e", "e", "e", "e", "e"],
+  ["e", "e", "e", "e", "e", "e", "e", "e"],
+  ["e", "e", "e", "e", "e", "e", "e", "e"],
+  ["e", "e", "e", "e", "e", "e", "e", "e"],
+  ["P", "P", "P", "P", "P", "P", "P", "P"],
+  ["R", "N", "B", "K", "Q", "B", "N", "R"],
 ];
-
-const colorE = {
-	empty: 0,
-	white: 1,
-	black: 2,
-};
-
-const piecesE = {
-	empty: 0,
-	pawn: 1,
-	rock: 2,
-	knight: 3,
-	bishop: 4,
-	queen: 5,
-	king: 6,
-};
 
 const boardHeight = 8;
 const boardWidth = 8;
 
-draw();
-function draw() {
-	let i = 0;
-	for (x in board) {
-		for (y in board[x]) {
-			//DRAWING BOARD
-			if (i % 2 == 0) {
-				ctx.fillStyle = "#000";
-			} else {
-				ctx.fillStyle = "#fff";
-			}
-			ctx.fillRect(x * 100, y * 100, x * 100 + 100, y * 100 + 100);
-			i++;
+const images = {};
 
-			//DRAWING PIECES
+const pieceInMouse = { x: 0, y: 0, piece: "e" };
+canvas.addEventListener("mousedown", (ev) => {
+  const x = ev.pageX;
+  const y = ev.pageY;
+  const pieceX = Math.floor(x / 100);
+  const pieceY = Math.floor(y / 100);
+  console.log(board[pieceY][pieceX]);
+});
 
-			if (i % 2 == 0) {
-				ctx.fillStyle = "#000";
-			} else {
-				ctx.fillStyle = "#fff";
-			}
-			const piece = board[x][y];
-			ctx.textAlign = "center";
-			ctx.textBaseline = "middle";
-			ctx.font = "30px Arial";
-			ctx.fillText(piece, x * 100 + 50, y * 100 + 50);
-		}
-		i++;
-	}
+async function start() {
+  await loadImages();
+  while (true) {
+    await draw();
+    await sleep(500);
+  }
+}
+
+async function draw() {
+  let i = 0;
+  for (y in board) {
+    for (x in board[y]) {
+      //DRAWING BOARD
+      if (i % 2 == 0) {
+        ctx.fillStyle = "#131313";
+      } else {
+        ctx.fillStyle = "#fff";
+      }
+      ctx.fillRect(x * 100, y * 100, x * 100 + 100, y * 100 + 100);
+      i++;
+
+      //DRAWING PIECES
+
+      const piece = board[y][x];
+      if (piece != "e") {
+        ctx.drawImage(images[piece], x * 100, y * 100, 100, 100);
+      }
+    }
+    i++;
+  }
+}
+
+async function loadImages() {
+  images.P = await loadImage("/images/p_w.png");
+  images.R = await loadImage("/images/r_w.png");
+  images.N = await loadImage("/images/n_w.png");
+  images.B = await loadImage("/images/b_w.png");
+  images.K = await loadImage("/images/k_w.png");
+  images.Q = await loadImage("/images/q_w.png");
+  images.p = await loadImage("/images/p_b.png");
+  images.r = await loadImage("/images/r_b.png");
+  images.n = await loadImage("/images/n_b.png");
+  images.b = await loadImage("/images/b_b.png");
+  images.k = await loadImage("/images/k_b.png");
+  images.q = await loadImage("/images/q_b.png");
+}
+
+function loadImage(filename) {
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.src = filename;
+    img.onload = () => {
+      resolve(img);
+    };
+  });
+}
+
+function sleep(millisec) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, millisec);
+  });
 }

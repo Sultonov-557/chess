@@ -8,22 +8,5 @@ body {
 	height: 99.6vh;
 	width: 99.6vw;
 	overflow: hidden;
-	display: flex;
-	align-items: center;
-	justify-content: center;
 	background-color: #252525;
-}
-
-@media (max-aspect-ratio: 1/1) {
-	canvas {
-		height: auto;
-		width: 100%;
-	}
-}
-
-@media (min-aspect-ratio: 1/1) {
-	canvas {
-		height: 100%;
-		width: auto;
-	}
 }
