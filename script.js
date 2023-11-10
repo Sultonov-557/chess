@@ -219,6 +219,538 @@ async function calculateMoves() {
 			setMove(y - 1, x + 2);
 		}
 	}
+
+	// white bishop
+	if (piece == "B") {
+		let moveY = 1;
+		let moveY_ = -1;
+		let moveX = 1;
+		let moveX_ = -1;
+
+		while (getPiece(y + moveY_, x + moveX_) == "e") {
+			setMove(y + moveY_, x + moveX_);
+			moveY_--;
+			moveX_--;
+		}
+
+		if (isBlack(y + moveY_, x + moveX_)) {
+			setMove(y + moveY_, x + moveX_);
+		}
+
+		moveY_ = -1;
+		moveX_ = -1;
+
+		while (getPiece(y + moveY, x + moveX) == "e") {
+			setMove(y + moveY, x + moveX);
+			moveY++;
+			moveX++;
+		}
+
+		if (isBlack(y + moveY, x + moveX)) {
+			setMove(y + moveY, x + moveX);
+		}
+
+		moveY = 1;
+		moveX = 1;
+
+		while (getPiece(y + moveY_, x + moveX) == "e") {
+			setMove(y + moveY_, x + moveX);
+			moveX++;
+			moveY_--;
+		}
+
+		if (isBlack(y + moveY_, x + moveX)) {
+			setMove(y + moveY_, x + moveX);
+		}
+
+		moveX = 1;
+		moveY_ = -1;
+
+		while (getPiece(y + moveY, x + moveX_) == "e") {
+			setMove(y + moveY, x + moveX_);
+			moveX_--;
+			moveY++;
+		}
+
+		if (isBlack(y + moveY, x + moveX_)) {
+			setMove(y + moveY, x + moveX_);
+		}
+	}
+
+	// black bishop
+	if (piece == "b") {
+		let moveY = 1;
+		let moveY_ = -1;
+		let moveX = 1;
+		let moveX_ = -1;
+
+		while (getPiece(y + moveY_, x + moveX_) == "e") {
+			setMove(y + moveY_, x + moveX_);
+			moveY_--;
+			moveX_--;
+		}
+
+		if (isWhite(y + moveY_, x + moveX_)) {
+			setMove(y + moveY_, x + moveX_);
+		}
+
+		moveY_ = -1;
+		moveX_ = -1;
+
+		while (getPiece(y + moveY, x + moveX) == "e") {
+			setMove(y + moveY, x + moveX);
+			moveY++;
+			moveX++;
+		}
+
+		if (isWhite(y + moveY, x + moveX)) {
+			setMove(y + moveY, x + moveX);
+		}
+
+		moveY = 1;
+		moveX = 1;
+
+		while (getPiece(y + moveY_, x + moveX) == "e") {
+			setMove(y + moveY_, x + moveX);
+			moveX++;
+			moveY_--;
+		}
+
+		if (isWhite(y + moveY_, x + moveX)) {
+			setMove(y + moveY_, x + moveX);
+		}
+
+		moveX = 1;
+		moveY_ = -1;
+
+		while (getPiece(y + moveY, x + moveX_) == "e") {
+			setMove(y + moveY, x + moveX_);
+			moveX_--;
+			moveY++;
+		}
+
+		if (isWhite(y + moveY, x + moveX_)) {
+			setMove(y + moveY, x + moveX_);
+		}
+	}
+
+	//white queen
+	if (piece == "Q") {
+		let moveY_ = -1;
+		let moveX_ = -1;
+		let moveY = 1;
+		let moveX = 1;
+
+		while (getPiece(y + moveY_, x) == "e") {
+			setMove(y + moveY_, x);
+			moveY_--;
+		}
+		while (getPiece(y + moveY, x) == "e") {
+			setMove(y + moveY, x);
+			moveY++;
+		}
+		while (getPiece(y, x + moveX) == "e") {
+			setMove(y, x + moveX);
+			moveX++;
+		}
+		while (getPiece(y, x + moveX_) == "e") {
+			setMove(y, x + moveX_);
+			moveX_--;
+		}
+
+		if (isBlack(y + moveY_, x)) {
+			setMove(y + moveY_, x);
+		}
+		if (isBlack(y + moveY, x)) {
+			setMove(y + moveY, x);
+		}
+		if (isBlack(y, x + moveX)) {
+			setMove(y, x + moveX);
+		}
+		if (isBlack(y, x + moveX_)) {
+			setMove(y, x + moveX_);
+		}
+
+		moveY = 1;
+		moveY_ = -1;
+		moveX = 1;
+		moveX_ = -1;
+
+		while (getPiece(y + moveY_, x + moveX_) == "e") {
+			setMove(y + moveY_, x + moveX_);
+			moveY_--;
+			moveX_--;
+		}
+
+		if (isBlack(y + moveY_, x + moveX_)) {
+			setMove(y + moveY_, x + moveX_);
+		}
+
+		moveY_ = -1;
+		moveX_ = -1;
+
+		while (getPiece(y + moveY, x + moveX) == "e") {
+			setMove(y + moveY, x + moveX);
+			moveY++;
+			moveX++;
+		}
+
+		if (isBlack(y + moveY, x + moveX)) {
+			setMove(y + moveY, x + moveX);
+		}
+
+		moveY = 1;
+		moveX = 1;
+
+		while (getPiece(y + moveY_, x + moveX) == "e") {
+			setMove(y + moveY_, x + moveX);
+			moveX++;
+			moveY_--;
+		}
+
+		if (isBlack(y + moveY_, x + moveX)) {
+			setMove(y + moveY_, x + moveX);
+		}
+
+		moveX = 1;
+		moveY_ = -1;
+
+		while (getPiece(y + moveY, x + moveX_) == "e") {
+			setMove(y + moveY, x + moveX_);
+			moveX_--;
+			moveY++;
+		}
+
+		if (isBlack(y + moveY, x + moveX_)) {
+			setMove(y + moveY, x + moveX_);
+		}
+	}
+
+	//black queen
+	if (piece == "q") {
+		let moveY_ = -1;
+		let moveX_ = -1;
+		let moveY = 1;
+		let moveX = 1;
+
+		while (getPiece(y + moveY_, x) == "e") {
+			setMove(y + moveY_, x);
+			moveY_--;
+		}
+		while (getPiece(y + moveY, x) == "e") {
+			setMove(y + moveY, x);
+			moveY++;
+		}
+		while (getPiece(y, x + moveX) == "e") {
+			setMove(y, x + moveX);
+			moveX++;
+		}
+		while (getPiece(y, x + moveX_) == "e") {
+			setMove(y, x + moveX_);
+			moveX_--;
+		}
+
+		if (isWhite(y + moveY_, x)) {
+			setMove(y + moveY_, x);
+		}
+		if (isWhite(y + moveY, x)) {
+			setMove(y + moveY, x);
+		}
+		if (isWhite(y, x + moveX)) {
+			setMove(y, x + moveX);
+		}
+		if (isWhite(y, x + moveX_)) {
+			setMove(y, x + moveX_);
+		}
+
+		moveY = 1;
+		moveY_ = -1;
+		moveX = 1;
+		moveX_ = -1;
+
+		while (getPiece(y + moveY_, x + moveX_) == "e") {
+			setMove(y + moveY_, x + moveX_);
+			moveY_--;
+			moveX_--;
+		}
+
+		if (isWhite(y + moveY_, x + moveX_)) {
+			setMove(y + moveY_, x + moveX_);
+		}
+
+		moveY_ = -1;
+		moveX_ = -1;
+
+		while (getPiece(y + moveY, x + moveX) == "e") {
+			setMove(y + moveY, x + moveX);
+			moveY++;
+			moveX++;
+		}
+
+		if (isWhite(y + moveY, x + moveX)) {
+			setMove(y + moveY, x + moveX);
+		}
+
+		moveY = 1;
+		moveX = 1;
+
+		while (getPiece(y + moveY_, x + moveX) == "e") {
+			setMove(y + moveY_, x + moveX);
+			moveX++;
+			moveY_--;
+		}
+
+		if (isWhite(y + moveY_, x + moveX)) {
+			setMove(y + moveY_, x + moveX);
+		}
+
+		moveX = 1;
+		moveY_ = -1;
+
+		while (getPiece(y + moveY, x + moveX_) == "e") {
+			setMove(y + moveY, x + moveX_);
+			moveX_--;
+			moveY++;
+		}
+
+		if (isWhite(y + moveY, x + moveX_)) {
+			setMove(y + moveY, x + moveX_);
+		}
+	}
+
+	//white king
+	if (piece == "K") {
+		if (getPiece(y + 2, x + 1) != "m" && !isWhite(y + 2, x + 1)) {
+			setMove(y + 2, x + 1);
+		}
+		if (getPiece(y + 2, x - 1) != "m" && !isWhite(y + 2, x - 1)) {
+			setMove(y + 2, x - 1);
+		}
+		if (getPiece(y - 2, x - 1) != "m" && !isWhite(y - 2, x - 1)) {
+			setMove(y - 2, x - 1);
+		}
+		if (getPiece(y - 2, x + 1) != "m" && !isWhite(y - 2, x + 1)) {
+			setMove(y - 2, x + 1);
+		}
+		if (getPiece(y + 1, x + 2) != "m" && !isWhite(y + 1, x + 2)) {
+			setMove(y + 1, x + 2);
+		}
+		if (getPiece(y + 1, x - 2) != "m" && !isWhite(y + 1, x - 2)) {
+			setMove(y + 1, x - 2);
+		}
+		if (getPiece(y - 1, x - 2) != "m" && !isWhite(y - 1, x - 2)) {
+			setMove(y - 1, x - 2);
+		}
+		if (getPiece(y - 1, x + 2) != "m" && !isWhite(y - 1, x + 2)) {
+			setMove(y - 1, x + 2);
+		}
+
+		let moveY_ = -1;
+		let moveX_ = -1;
+		let moveY = 1;
+		let moveX = 1;
+
+		while (getPiece(y + moveY_, x) == "e") {
+			setMove(y + moveY_, x);
+			moveY_--;
+		}
+		while (getPiece(y + moveY, x) == "e") {
+			setMove(y + moveY, x);
+			moveY++;
+		}
+		while (getPiece(y, x + moveX) == "e") {
+			setMove(y, x + moveX);
+			moveX++;
+		}
+		while (getPiece(y, x + moveX_) == "e") {
+			setMove(y, x + moveX_);
+			moveX_--;
+		}
+
+		if (isBlack(y + moveY_, x)) {
+			setMove(y + moveY_, x);
+		}
+		if (isBlack(y + moveY, x)) {
+			setMove(y + moveY, x);
+		}
+		if (isBlack(y, x + moveX)) {
+			setMove(y, x + moveX);
+		}
+		if (isBlack(y, x + moveX_)) {
+			setMove(y, x + moveX_);
+		}
+
+		moveY = 1;
+		moveY_ = -1;
+		moveX = 1;
+		moveX_ = -1;
+
+		while (getPiece(y + moveY_, x + moveX_) == "e") {
+			setMove(y + moveY_, x + moveX_);
+			moveY_--;
+			moveX_--;
+		}
+
+		if (isBlack(y + moveY_, x + moveX_)) {
+			setMove(y + moveY_, x + moveX_);
+		}
+
+		moveY_ = -1;
+		moveX_ = -1;
+
+		while (getPiece(y + moveY, x + moveX) == "e") {
+			setMove(y + moveY, x + moveX);
+			moveY++;
+			moveX++;
+		}
+
+		if (isBlack(y + moveY, x + moveX)) {
+			setMove(y + moveY, x + moveX);
+		}
+
+		moveY = 1;
+		moveX = 1;
+
+		while (getPiece(y + moveY_, x + moveX) == "e") {
+			setMove(y + moveY_, x + moveX);
+			moveX++;
+			moveY_--;
+		}
+
+		if (isBlack(y + moveY_, x + moveX)) {
+			setMove(y + moveY_, x + moveX);
+		}
+
+		moveX = 1;
+		moveY_ = -1;
+
+		while (getPiece(y + moveY, x + moveX_) == "e") {
+			setMove(y + moveY, x + moveX_);
+			moveX_--;
+			moveY++;
+		}
+
+		if (isBlack(y + moveY, x + moveX_)) {
+			setMove(y + moveY, x + moveX_);
+		}
+	}
+
+	//black king
+	if (piece == "k") {
+		if (getPiece(y + 2, x + 1) != "m" && !isBlack(y + 2, x + 1)) {
+			setMove(y + 2, x + 1);
+		}
+		if (getPiece(y + 2, x - 1) != "m" && !isBlack(y + 2, x - 1)) {
+			setMove(y + 2, x - 1);
+		}
+		if (getPiece(y - 2, x - 1) != "m" && !isBlack(y - 2, x - 1)) {
+			setMove(y - 2, x - 1);
+		}
+		if (getPiece(y - 2, x + 1) != "m" && !isBlack(y - 2, x + 1)) {
+			setMove(y - 2, x + 1);
+		}
+		if (getPiece(y + 1, x + 2) != "m" && !isBlack(y + 1, x + 2)) {
+			setMove(y + 1, x + 2);
+		}
+		if (getPiece(y + 1, x - 2) != "m" && !isBlack(y + 1, x - 2)) {
+			setMove(y + 1, x - 2);
+		}
+		if (getPiece(y - 1, x - 2) != "m" && !isBlack(y - 1, x - 2)) {
+			setMove(y - 1, x - 2);
+		}
+		if (getPiece(y - 1, x + 2) != "m" && !isBlack(y - 1, x + 2)) {
+			setMove(y - 1, x + 2);
+		}
+
+		let moveY_ = -1;
+		let moveX_ = -1;
+		let moveY = 1;
+		let moveX = 1;
+
+		while (getPiece(y + moveY_, x) == "e") {
+			setMove(y + moveY_, x);
+			moveY_--;
+		}
+		while (getPiece(y + moveY, x) == "e") {
+			setMove(y + moveY, x);
+			moveY++;
+		}
+		while (getPiece(y, x + moveX) == "e") {
+			setMove(y, x + moveX);
+			moveX++;
+		}
+		while (getPiece(y, x + moveX_) == "e") {
+			setMove(y, x + moveX_);
+			moveX_--;
+		}
+
+		if (isWhite(y + moveY_, x)) {
+			setMove(y + moveY_, x);
+		}
+		if (isWhite(y + moveY, x)) {
+			setMove(y + moveY, x);
+		}
+		if (isWhite(y, x + moveX)) {
+			setMove(y, x + moveX);
+		}
+		if (isWhite(y, x + moveX_)) {
+			setMove(y, x + moveX_);
+		}
+
+		moveY = 1;
+		moveY_ = -1;
+		moveX = 1;
+		moveX_ = -1;
+
+		while (getPiece(y + moveY_, x + moveX_) == "e") {
+			setMove(y + moveY_, x + moveX_);
+			moveY_--;
+			moveX_--;
+		}
+
+		if (isWhite(y + moveY_, x + moveX_)) {
+			setMove(y + moveY_, x + moveX_);
+		}
+
+		moveY_ = -1;
+		moveX_ = -1;
+
+		while (getPiece(y + moveY, x + moveX) == "e") {
+			setMove(y + moveY, x + moveX);
+			moveY++;
+			moveX++;
+		}
+
+		if (isWhite(y + moveY, x + moveX)) {
+			setMove(y + moveY, x + moveX);
+		}
+
+		moveY = 1;
+		moveX = 1;
+
+		while (getPiece(y + moveY_, x + moveX) == "e") {
+			setMove(y + moveY_, x + moveX);
+			moveX++;
+			moveY_--;
+		}
+
+		if (isWhite(y + moveY_, x + moveX)) {
+			setMove(y + moveY_, x + moveX);
+		}
+
+		moveX = 1;
+		moveY_ = -1;
+
+		while (getPiece(y + moveY, x + moveX_) == "e") {
+			setMove(y + moveY, x + moveX_);
+			moveX_--;
+			moveY++;
+		}
+
+		if (isWhite(y + moveY, x + moveX_)) {
+			setMove(y + moveY, x + moveX_);
+		}
+	}
 }
 
 async function draw() {
@@ -238,7 +770,7 @@ async function draw() {
 
 			const piece = getPiece(y, x);
 			if (getMove(y, x)) {
-				ctx.fillStyle = "rgba(255,0,0,60)";
+				ctx.fillStyle = "rgba(255,0,0,0.8)";
 				ctx.fillRect(x * 100, y * 100, x * 100 + 100, y * 100 + 100);
 			}
 
@@ -313,11 +845,5 @@ function loadImage(filename) {
 		img.onload = () => {
 			resolve(img);
 		};
-	});
-}
-
-function sleep(millisec) {
-	return new Promise((resolve) => {
-		setTimeout(resolve, millisec);
 	});
 }
