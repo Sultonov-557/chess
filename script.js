@@ -23,6 +23,8 @@ const moves = [
 	[0, 0, 0, 0, 0, 0, 0, 0],
 ];
 
+let turn = 1;
+
 const boardHeight = 8;
 const boardWidth = 8;
 
@@ -39,6 +41,7 @@ canvas.addEventListener("mousedown", (ev) => {
 		board[selected.y][selected.x] = "e";
 		selected.x = -1;
 		selected.y = -1;
+		moved();
 		clearMove();
 	} else {
 		clearMove();
@@ -57,19 +60,30 @@ async function start() {
 async function calculateMoves() {
 	const { x, y } = selected;
 	const piece = getPiece(y, x);
+	if (turn) {
+		if (isBlack(y, x)) {
+			return;
+		}
+	} else {
+		if (isWhite(y, x)) {
+			return;
+		}
+	}
 
 	//black pawn
 	if (piece == "p") {
 		if (getPiece(y + 1, x) == "e") {
 			setMove(y + 1, x);
 			if (y == 1) {
-				setMove(y + 2, x);
+				if (getPiece(y + 2, x) == "e") {
+					setMove(y + 2, x);
+				}
 			}
 		}
-		if (getPiece(y + 1, x + 1) != "e") {
+		if (getPiece(y + 1, x + 1) != "e" && isWhite(y + 1, x + 1)) {
 			setMove(y + 1, x + 1);
 		}
-		if (getPiece(y + 1, x - 1) != "e") {
+		if (getPiece(y + 1, x - 1) != "e" && isWhite(y + 1, x - 1)) {
 			setMove(y + 1, x - 1);
 		}
 	}
@@ -79,13 +93,15 @@ async function calculateMoves() {
 		if (getPiece(y - 1, x) == "e") {
 			setMove(y - 1, x);
 			if (y == 6) {
-				setMove(y - 2, x);
+				if (getPiece(y - 2, x) == "e") {
+					setMove(y - 2, x);
+				}
 			}
 		}
-		if (getPiece(y - 1, x + 1) != "e") {
+		if (getPiece(y - 1, x + 1) != "e" && isBlack(y - 1, x + 1)) {
 			setMove(y - 1, x + 1);
 		}
-		if (getPiece(y - 1, x - 1) != "e") {
+		if (getPiece(y - 1, x - 1) != "e" && isBlack(y - 1, x - 1)) {
 			setMove(y - 1, x - 1);
 		}
 	}
@@ -810,6 +826,14 @@ function clearMove() {
 		for (x in moves) {
 			moves[y][x] = 0;
 		}
+	}
+}
+
+function moved() {
+	if (turn) {
+		turn = 0;
+	} else {
+		turn = 1;
 	}
 }
 
